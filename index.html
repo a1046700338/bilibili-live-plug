@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleBoder</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3666384_uacdjrl9km.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --topWidth: 400px;
+            --topHeigth: 32px;
+            --boxWidth: 80%;
+            --boxHeight: 75%;
+            --bgcolor-white: #eef2f3;
+            --bgcolor-black: #1D1F20;
+            --bgcolor-orange: #f79533;
+            --bgcolor-pink: #ef4e7b;
+            --bgcolor-orange2: #f37055;
+            --bgcolor-purple: #a166ab;
+            --bgcolor-purpleBlue: #5073b8;
+            --bgcolor-purpleGreen: #1098ad;
+            --bgcolor-Green: #07b39b;
+            --bgcolor-lightGreen: #6fba82;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 主题色 */
+            /* background-color: #1D1F20; */
+            /* background-color: rgb(160, 205, 226); */
+            background-color: #c4cbcf;
+        }
+
+        #box {
+            display: flex;
+            /* flex: 2; */
+            justify-content: center;
+            flex-wrap: wrap;
+            width: var(--boxWidth);
+            height: var(--boxHeight);
+            color: white;
+            font-family: 'Raleway';
+            text-decoration-line: none;
+            font-size: 2.5rem;
+        }
+
+        .gradient-border {
+            --borderWidth: 10px;
+            background: #1D1F20;
+            position: relative;
+            border-radius: var(--borderWidth);
+        }
+
+        .gradient-border:after {
+            content: '';
+            position: absolute;
+            top: calc(-1 * var(--borderWidth));
+            left: calc(-1 * var(--borderWidth));
+            height: calc(100% + var(--borderWidth) * 2);
+            width: calc(100% + var(--borderWidth) * 2);
+            background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            border-radius: calc(1 * var(--borderWidth));
+            /* 边框圆角 */
+            z-index: -1;
+            animation: animatedgradient 3s ease alternate infinite;
+            /* 添加动画 */
+            background-size: 300% 300%;
+        }
+
+        /* 关键帧动画 */
+        @keyframes animatedgradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 顶部标题样式 */
+        .top {
+            position: absolute;
+            text-align: center;
+            width: var(--topWidth);
+            height: var(--topHeigth);
+            /* background-color: rgb(124, 57, 57); */
+            top: calc(5% - var(--topHeigth)/1.5);
+            left: calc(50% - var(--topWidth)/2);
+        }
+
+        .title {
+            color: var(--bgcolor-black);
+        }
+
+        /* 卡片通用样式 */
+        .cardStyle {
+            --btnHeigth: 45px;
+            border-radius: 5px;
+            background-color: #eef2f3;
+            text-align: center;
+            /* line-height: calc(50% + var(--btnHeigth)/1.2); 行高 */
+            border: none;
+            /* box-shadow: 1px 2px 2px #eef2f3;*/
+            margin: 5px;
+            padding: 5px;
+            width: auto;
+            height: 20px;
+            /* 文字溢出处理 */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .card-shadow {
+            box-shadow: 2px 5px 15px 0 rgb(238, 242, 243, 0.25);
+        }
+
+        #card-follow {
+            color: var(--bgcolor-white);
+            background-color: var(--bgcolor-pink);
+            box-shadow: 2px 5px 15px 0 var(--bgcolor-pink);
+        }
+
+        .side {
+            /* flex: 1; */
+            margin-left: 15px;
+            margin-right: 15px;
+            font-weight: bold;
+            height: var(--boxHeight);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .leftSide {
+            --btnHeigth: 45px;
+            border-radius: 5px;
+            background-color: #eef2f3;
+            text-align: center;
+            line-height: calc(50% + var(--btnHeigth)/2);
+            box-shadow: 0 15px 35px var(--bgcolor-white);
+            border: none;
+            /* box-shadow: 1px 2px 2px #eef2f3;*/
+            margin-right: 10px;
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 244px;
+            /* height: calc(var(--boxHeight)/2); 这是通过计算属性box的高是随窗口变化来进行计算leftside的高，默认为box高的一半 */
+        }
+
+        .list {
+            --btnHeigth: 45px;
+            border-radius: 5px;
+            background-color: var(--bgcolor-orange);
+            text-align: center;
+            line-height: calc(50% + var(--btnHeigth)/2);
+            box-shadow: 0 15px 35px var(--bgcolor-orange);
+            color: var(--bgcolor-white);
+            margin-top: 20px;
+            margin-right: 10px;
+            padding-left: 25px;
+            width: 230px;
+        }
+
+        .footer {
+            position: absolute;
+            /* background-color: var(--bgcolor-lightGreen); */
+            top: calc(95% - var(--topHeigth)/1.5);
+            left: calc(50% - var(--topWidth)/2);
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 600px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .footer-info a {
+            text-decoration: none;
+            color: var(--bgcolor-black);
+        }
+
+        .footer-info a:hover {
+            color: var(--bgcolor-purpleBlue);
+        }
+
+        .danmu {
+            width: 150px;
+            margin-top: 50px;
+        }
+
+        .damuText{
+            /* 文字溢出处理 */
+            text-align: left;
+            height: auto;
+            overflow: visible;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 左侧栏（公告栏） -->
+    <div class="side">
+        <div class="leftSide">
+            <h3>About</h3>
+            <p>up猪已经成一头猪啦！</p>
+            <p>目前大四【软件工程专业】，学校撵我们出去，自主实习</p>
+            <p>奈何就业形势严峻，高温、疫情、地震，主要是本人太菜！</p>
+            <p>正在自学中！</p>
+        </div>
+        <p>可透露的情报有：</p>
+        <!-- 列表 -->
+        <div class="list">
+            <ul>
+                <li>JavaScript</li>
+                <li>Vue</li>
+                <li>nodejs</li>
+                <li>MongoDB</li>
+                <li>MySql</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 顶部标题 -->
+    <div class="top">
+        <div class="title">
+            <h1>欢迎光临我的直播间~</h1>
+        </div>
+    </div>
+    <div class="gradient-border" id="box">
+        中间盒子，显示器捕捉
+    </div>
+    <!-- 右侧栏（功能栏） -->
+    <div class="side">
+        <div class="cardStyle card-shadow" id="card-follow">关注我，不迷路</div>
+        <div class="cardStyle card-shadow">这个人很懒，啥都没写</div>
+        <!-- 弹幕模块 -->
+        <div class="danmu">
+            <h3>弹幕姬</h3>
+            <!-- 做换行处理 -->
+            <!-- <div class="damuText cardStyle">张三：主播我来了你在干嘛，吃饭了吗</div> 实例 -->
+            <span>弹幕姬加载中...</span>
+            <!-- 今天差不多，就写到这里，明天继续，明天是ajax请求功能的实现 -->
+        </div>
+    </div>
+    <!-- 现在写一下底部信息栏 -->
+    <div class="footer">
+        <!-- 绝对定位，后续传上github.... -->
+        <!-- 可以直接搬top选择器的属性 -->
+        <div class="footer-info">
+            <div class="copyright">
+                <a href="http://sakurafeiyu.top">花诽语</a> &copy; 2022 - now
+            </div>
+            <a href="https://live.bilibili.com/5136571">
+                <i class="iconfont icon-bilibili">我的房间号5136571</i>
+            </a>
+            <a href="https://github.com/a1046700338">
+                <i class="iconfont icon-github">本项目Github</i>
+            </a>
+            <a href="mailto:sakurafeiyu666@163.com">
+                <i class="iconfont icon-youxiang">联系方式</i>
+            </a>
+        </div>
+    </div>
+    <!-- 那么根据b站的API我可以获取到弹幕数据，写一个实时弹幕姬 -->
+    <!-- 现在我进行的操作（码代码）可以说是一种渐进式的，按需添加内容 -->
+</body>
+
+</html>
