@@ -44,7 +44,7 @@
             /* 主题色 */
             /* background-color: #1D1F20; */
             /* background-color: rgb(160, 205, 226); */
-            background-color: #c4cbcf;
+            background: #c4cbcf;
         }
 
         #box {
@@ -65,11 +65,13 @@
             background: #1D1F20;
             position: relative;
             border-radius: var(--borderWidth);
+
         }
 
         .gradient-border:after {
             content: '';
             position: absolute;
+            box-shadow: 5px 15px 15px 0 rgb(91, 148, 161);/* 边框盒子阴影 */
             top: calc(-1 * var(--borderWidth));
             left: calc(-1 * var(--borderWidth));
             height: calc(100% + var(--borderWidth) * 2);
@@ -189,26 +191,26 @@
             position: absolute;
             /* background-color: var(--bgcolor-lightGreen); */
             top: calc(95% - var(--topHeigth)/1.5);
-            left: calc(50% - var(--topWidth)/2);
+            left: calc(50% - var(--topWidth)/10rem);
             text-align: center;
         }
 
         .footer-info {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
             align-items: center;
-            width: 600px;
+            width: 800px;
             height: 30px;
             padding: 5px;
         }
 
         .footer-info a {
             text-decoration: none;
-            color: var(--bgcolor-black);
+            color: var(--bgcolor-purpleBlue);
         }
 
         .footer-info a:hover {
-            color: var(--bgcolor-purpleBlue);
+            color: var(--bgcolor-pink);
         }
 
         .danmu {
@@ -234,8 +236,8 @@
         <div class="leftSide">
             <h3>About</h3>
             <p>up猪已经成一头猪啦！</p>
-            <p>目前大四【软件工程专业】，学校撵我们出去，自主实习</p>
-            <p>奈何就业形势严峻，高温、疫情、地震，主要是本人太菜！</p>
+            <p>目前大四【软件工程专业】，学校让我们自主实习</p>
+            <p>奈何就业形势严峻，<del>高温、疫情、地震，</del>主要是本人太菜！</p>
             <p>正在自学中！</p>
         </div>
         <p>可透露的情报有：</p>
@@ -246,7 +248,8 @@
                 <li>Vue</li>
                 <li>nodejs</li>
                 <li>MongoDB</li>
-                <li>MySql</li>
+                <li>MySQL</li>
+                <li>计算机网络</li>
             </ul>
         </div>
     </div>
@@ -257,7 +260,7 @@
         </div>
     </div>
     <div class="gradient-border" id="box">
-        中间盒子，显示器捕捉
+        中间盒子
     </div>
     <!-- 右侧栏（功能栏） -->
     <div class="side">
@@ -268,7 +271,8 @@
             <h3>弹幕姬</h3>
             <!-- 做换行处理 -->
             <!-- <div class="damuText cardStyle">张三：主播我来了你在干嘛，吃饭了吗</div> 实例 -->
-            <span>弹幕姬加载中...</span>
+            <!-- <
+                span>弹幕姬加载中...</span> -->
             <!-- 今天差不多，就写到这里，明天继续，明天是ajax请求功能的实现 -->
         </div>
     </div>
@@ -278,12 +282,12 @@
         <!-- 可以直接搬top选择器的属性 -->
         <div class="footer-info">
             <div class="copyright">
-                <a href="http://sakurafeiyu.top">花诽语</a> &copy; 2022 - now
+                <a href="http://sakurafeiyu.top">花诽语</a> Copyright &copy; 2022 - now
             </div>
             <a href="https://live.bilibili.com/5136571">
                 <i class="iconfont icon-bilibili">我的房间号5136571</i>
             </a>
-            <a href="https://github.com/a1046700338">
+            <a href="https://github.com/a1046700338/bilibili-live-plug">
                 <i class="iconfont icon-github">本项目Github</i>
             </a>
             <a href="mailto:sakurafeiyu666@163.com">
@@ -292,6 +296,7 @@
         </div>
     </div>
     <!-- 那么根据b站的API我可以获取到弹幕数据，写一个实时弹幕姬 -->
+    <!-- api https://www.bilibili.com/read/cv8186413/ -->
     <!-- 现在我进行的操作（码代码）可以说是一种渐进式的，按需添加内容 -->
 </body>
 
